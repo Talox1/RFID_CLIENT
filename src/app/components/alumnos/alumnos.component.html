@@ -54,18 +54,20 @@
                         <tr>
                            <th><abbr><Strong>#</Strong></abbr></th>
                            <th><Strong>Nombre</Strong></th>
+                           <th><Strong>Last Name</Strong></th>
                            <th><abbr><Strong>Matricula</Strong></abbr></th>
                            <th><abbr><Strong>Asignado a RFID</Strong></abbr></th>
                            <th><abbr><Strong>Num_RFID</Strong></abbr></th>
                         </tr>
                      </thead>
                      <tfoot>
-                        <tr>
-                           <th>1</th>
-                           <th>Talox</th>
-                           <th>181266</th>
-                           <th>False</th>
-                           <th>something here</th>
+                        <tr *ngFor="let alumno of alumnos">
+                           <th> {{alumno.id}} </th>
+                           <th> {{alumno.name}} </th>
+                           <th> {{alumno.last_name}} </th>
+                           <th> {{alumno.matricula}} </th>
+                           <th> False </th>
+                           <th> {{alumno.id_rfid}} </th>
 
                         </tr>
                      </tfoot>
@@ -76,19 +78,27 @@
                   <h1 class="title">CRUD ALUMNO</h1>
                   <div class="field">
                      <div class="control">
-                        <form >
-                        <label class="label">Nombre</label>
-                        <input class="input is-primary" type="text"
-                           placeholder="Primary input">
-                        &nbsp;
-                        <label class="label">Matricula</label>
-                        <input class="input is-primary" type="text"
-                           placeholder="Primary input">
-                           <button class="button is-success" style="margin-top: 5px;"> Crear</button>
+                        <form [formGroup]="registerForm" (ngSubmit)="crearAlumno()">
+                           <label class="label">Nombre</label>
+                           <input class="input is-primary" type="text"
+                              placeholder="Nombre" formControlName="name">
+
+                           <label class="label">Apellidos</label>
+                           <input class="input is-primary" type="text"
+                              placeholder="Apellidos" formControlName="last_name">
+
+
+                           <label class="label">Matricula</label>
+                           <input class="input is-primary" type="text"
+                              placeholder="Matricula" formControlName="matricula">
+
+
+                           <button type="submit" class="button is-success" style="margin-top:
+                              5px;"> Crear</button>
                         </form>
                      </div>
-                     
+
                   </div>
-                  
+
                </div>
             </div>

@@ -29,17 +29,14 @@ export class RfidComponent implements OnInit {
       console.log(response);
       this.rfids = response;
     })
-
     this.registerForm = this.fb.group({
-      
       number_RFID: ['', ],
-      
     });
 
     
   }
 
-  //servicio para obtnener todos los RFID
+  //servicio para obtnener el RFID
 
   getRFID(){
     this.rfidService.getRFIDS().subscribe(response =>{

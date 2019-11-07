@@ -2,12 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Socket } from 'ngx-socket-io';
-
-
-
 import { API } from '../app-config';
 import { RFID } from '../models/rfid/rfid';
-import { Message } from '../models/msj/msj'
 import { SocketService } from './socket.service';
 const httpOptions = {
   headers: new HttpHeaders({
@@ -31,8 +27,6 @@ export class RFIDService {
       de: 'Angular',
       cuerpo: cuerpo
     };
-    console.log('RFID SERVICE: ', payload);
-    // this.socket.emit('message',msj);
     this.socketService.emit(msj, payload);
   }
 
@@ -42,6 +36,12 @@ export class RFIDService {
 
 
 
+  agregarAlumno(params:any):Observable<any> {
+    return this.http.post(`${this.api}alumnos/`, params, httpOptions);
+  }
+  getAlumnos():Observable<any>{
+    return this.http.get(`${this.api}alumnos/`, httpOptions);
+  }
 
 
   agregarRFID(params: any): Observable<any> {

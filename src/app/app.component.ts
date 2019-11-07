@@ -24,8 +24,9 @@ export class AppComponent implements OnInit {
     this.mensajesSubscription = this.rfidService.getMessages().subscribe(response => {
       console.log('mensaje desde el Servidor:',response);
       this.mensajes.push(response);
-      console.log(response.validacion);
-      if(response.validacion == 1){
+      var respuesta:any = response;
+      console.log(respuesta.validacion);
+      if(respuesta.validacion == 1){
 
       }
     });

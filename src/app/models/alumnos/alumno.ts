@@ -1,5 +1,5 @@
   
-export interface Alumno {
+export class Alumno {
    id:number
    matricula:number
    name: String;

@@ -11,21 +11,21 @@ export class SocketService {
   // msj = this.socket.fromEvent<String>('msj');
 
   constructor(private socket: Socket) {
-    this.checkStatus();
+    // this.checkStatus();
   }
 
-  checkStatus() {//metodo para verificar 
-    this.socket.on('connect', () => {//socket contiene todos los recursos de Socket, metodo on
-      console.log('Conectado al servidor');
-      this.socketStatus = true;
-    });
+  // checkStatus() {//metodo para verificar 
+  //   this.socket.on('connect', () => {//socket contiene todos los recursos de Socket, metodo on
+  //     console.log('Conectado al servidor');
+  //     this.socketStatus = true;
+  //   });
     
 
-    this.socket.on('disconnect', () => {//contiene todos los recursos de socket
-      console.log('Desconectado del servidor');
-      this.socketStatus = false;
-    });
-  }
+  //   this.socket.on('disconnect', () => {//contiene todos los recursos de socket
+  //     console.log('Desconectado del servidor');
+  //     this.socketStatus = false;
+  //   });
+  // }
   
   emit(evento: string, payload?: any, callback?: Function) {//encarga enviar todos los metodos al servidor
     console.log('Emitiendo: ' + evento)
