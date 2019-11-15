@@ -18,6 +18,7 @@ import { AlumnosComponent } from './components/alumnos/alumnos.component';
 import { RfidComponent } from './components/rfid/rfid.component';
 import { GruposComponent } from './components/grupos/grupos.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { BarraComponent } from './components/barra/barra.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MenuComponent } from './components/menu/menu.component';
     AlumnosComponent,
     RfidComponent,
     GruposComponent,
-    MenuComponent
+    MenuComponent,
+    BarraComponent
   ],
   imports: [
     BrowserModule,

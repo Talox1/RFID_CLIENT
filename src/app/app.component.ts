@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2, ViewChild, } from '@angular/core';
 import { RFIDService } from './services/rfid.service';
 import { Subscription } from 'rxjs';
 @Component({
@@ -7,6 +7,11 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  @ViewChild("modal1", { static: true }) modal1: ElementRef;
+  @ViewChild("modal2", { static: true }) modal2: ElementRef;
+  @ViewChild("modal3", { static: true }) modal3: ElementRef;
+  @ViewChild("modal4", { static: true }) modal4: ElementRef;
+
   title = 'RFID';
 
   mensajesSubscription: Subscription;
@@ -14,7 +19,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private rfidService: RFIDService,
-    // public chatService: ChatService
+    private renderer: Renderer2
+
   ) {
 
   }
@@ -25,10 +31,18 @@ export class AppComponent implements OnInit {
       console.log('mensaje desde el Servidor:',response);
       this.mensajes.push(response);
       var respuesta:any = response;
-      console.log(respuesta.validacion);
+      
       if(respuesta.validacion == 1){
-
-      }
+        this.rfidService.selectedRFID.number_RFID = respuesta.cuerpo;
+        console.log(this.rfidService.selectedRFID);
+        this.renderer.addClass(this.modal1.nativeElement, "is-active");
+      }else if(respuesta.validacion == 2){
+        this.renderer.addClass(this.modal2.nativeElement, "is-active");
+      }else if(respuesta.validacion == 3){
+        this.renderer.addClass(this.modal3.nativeElement, "is-active");
+      }else{
+        this.renderer.addClass(this.modal4.nativeElement, "is-active");
+      }    
     });
   }
 
@@ -52,4 +66,11 @@ export class AppComponent implements OnInit {
     this.rfidService.enviarMSJ(msj,'mensaje4')
   }
 
+  cerrarModal(){
+    this.renderer.removeClass(this.modal1.nativeElement, "is-active");
+    this.renderer.removeClass(this.modal2.nativeElement, "is-active");
+    this.renderer.removeClass(this.modal3.nativeElement, "is-active");
+    this.renderer.removeClass(this.modal4.nativeElement, "is-active");
+    
+  }
 }

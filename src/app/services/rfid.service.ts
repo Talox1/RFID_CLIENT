@@ -42,14 +42,27 @@ export class RFIDService {
   getAlumnos():Observable<any>{
     return this.http.get(`${this.api}alumnos/`, httpOptions);
   }
-
+  getAlumnosByID(id:any):Observable<any>{
+    return this.http.get(`${this.api}alumnos/${id}`, httpOptions);
+  }
 
   agregarRFID(params: any): Observable<any> {
-    return this.http.post(`${this.api}/alumnos`, params, httpOptions);
+    return this.http.post(`${this.api}rfids/`, params, httpOptions);
   }
 
   getRFIDS(): Observable<any> {//obtiene todo los RFIDS
-    return this.http.get(`${this.api}alumnos/`, httpOptions);
+    return this.http.get(`${this.api}rfids/`, httpOptions);
+  }
+
+  asignarRFIDAlumno(params:any, id):Observable<any>{
+    return this.http.put(`${this.api}alumnos/${id}`,params, httpOptions)
+  }
+  changeStatusRFID(params:any, id):Observable<any>{
+    return this.http.put(`${this.api}rfids/${id}`,params, httpOptions)
+  }
+
+  getAsistencias():Observable<any>{
+    return this.http.get(`${this.api}asistencias/`, httpOptions);
   }
 
 }

@@ -14,6 +14,9 @@ export class RfidComponent implements OnInit {
   registerForm: FormGroup;
   rfids:RFID []
 
+
+  rfid;
+
   mensajesSubscription: Subscription
   mensajes: any[] = [];
 
@@ -31,9 +34,7 @@ export class RfidComponent implements OnInit {
     })
     this.registerForm = this.fb.group({
       number_RFID: ['', ],
-    });
-
-    
+    });    
   }
 
   //servicio para obtnener el RFID
@@ -42,7 +43,8 @@ export class RfidComponent implements OnInit {
     this.rfidService.getRFIDS().subscribe(response =>{
       console.log(response);
       this.rfids = response;
-      this.rfidService.selectedRFID = response[0];//
+      
+      // this.rfidService.selectedRFID = response[0];//
       
     })
   }
@@ -54,14 +56,15 @@ export class RfidComponent implements OnInit {
     
   }
 
-  registrarRFID(msj:string){
-    const payload ={
-      nombre:'Prueba',
-      matricula:123,
-      last_name:'prueba',
-      id_rfid:1
+  registrarRFID(){
+    const params ={
+      status:false,
+      number_rfid:this.rfidService.selectedRFID.number_RFID
+      
     }
-    this.rfidService.agregarRFID(msj);
+    this.rfidService.agregarRFID(params).subscribe(response =>{
+      console.log('RFID registrado',response);
+    })
   }
 
   enviarMsj(){
