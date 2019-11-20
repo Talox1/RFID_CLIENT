@@ -33,7 +33,7 @@ export class RfidComponent implements OnInit {
       this.rfids = response;
     })
     this.registerForm = this.fb.group({
-      number_RFID: ['', ],
+      number_rfid: ['', ],
     });    
   }
 
