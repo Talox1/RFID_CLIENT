@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
       var respuesta:any = response;
       
       if(respuesta.validacion == 1){
-        this.rfidService.selectedRFID.number_RFID = respuesta.cuerpo;
+        this.rfidService.selectedRFID.number_rfid = respuesta.cuerpo;
         console.log(this.rfidService.selectedRFID);
         this.renderer.addClass(this.modal1.nativeElement, "is-active");
       }else if(respuesta.validacion == 2){
