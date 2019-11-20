@@ -20,7 +20,7 @@ export class RfidComponent implements OnInit {
   mensajesSubscription: Subscription
   mensajes: any[] = [];
 
-  constructor(private rfidService: RFIDService,
+  constructor(public rfidService: RFIDService,
     public fb: FormBuilder,
     private socektService: SocketService) {
 
@@ -59,7 +59,7 @@ export class RfidComponent implements OnInit {
   registrarRFID(){
     const params ={
       status:false,
-      number_rfid:this.rfidService.selectedRFID.number_RFID
+      number_rfid:this.rfidService.selectedRFID.number_rfid
       
     }
     this.rfidService.agregarRFID(params).subscribe(response =>{

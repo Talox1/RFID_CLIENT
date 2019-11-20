@@ -1,5 +1,5 @@
   
 export class RFID {
    id:number
-   number_RFID:number
+   number_rfid:number
  }

@@ -1,50 +1,8 @@
 <div class="container">
-   <!-- <div class="notification">
-      <div class="columns is-desktop half-mobile
-         is-one-quarter-tablet is-half-desktop is-half-widescreen
-         is-half-fullhd">
 
-         <div class="column">
-            <div class="card">
-               <div class="card-content btn" routerLink="/alumnos">
-                  <p class="title">
-                     Alumnos
-                  </p>
-               </div>
-            </div>
-         </div>
-         <div class="column">
-            <div class="card">
-               <div class="card-content" routerLink="/asistencia">
-                  <p class="title">
-                     Asistencia
-                  </p>
-               </div>
-            </div>
-         </div>
-         <div class="column">
-            <div class="card">
-               <div class="card-content" routerLink="/asistencia">
-                  <p class="title">
-                     Asistencia
-                  </p>
-               </div>
-            </div>
-         </div>
-         <div class="column">
-            <div class="card">
-               <div class="card-content" routerLink="/grupos">
-                  <p class="title">
-                     Grupos
-                  </p>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div> -->
   
   <input [(ngModel)]="selectedStudent.name"  class="input" type="text" placeholder="Alumno seleccionado" style="width: 200px;">
-  <input [(ngModel)]="selectRFID.number_rfid" class="input" type="text" placeholder="RFID seleccionado" style="width: 200px;">
+  <input [(ngModel)]="selectedRFID.number_rfid" class="input" type="text" placeholder="RFID seleccionado" style="width: 200px;">
   &nbsp;
   <button class="button is-primary" (click)="asignar()" >Añadir</button>
  
