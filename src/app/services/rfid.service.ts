@@ -30,6 +30,8 @@ export class RFIDService {
     this.socketService.emit(msj, payload);
   }
 
+
+  
   getMessages() {
     return this.socketService.listen('mensaje-nuevo');
   }
